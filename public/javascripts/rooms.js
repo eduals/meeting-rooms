@@ -21,6 +21,13 @@ function form_validate() {
 	return true;
 }
 
+function set_active_day() {
+	$('div.masthead.this-week').find('li').eq(active_day).addClass('active');
+	$('div.masthead.next-week').find('li').eq(active_day).addClass('active');
+	$('div.this-week').find('div.tab-pane').eq(active_day).addClass('active');
+	$('div.next-week').find('div.tab-pane').eq(active_day).addClass('active');
+}
+
 function set_active_week() {
 	if (active_week === 1) {
 		$('#this-week').parent().addClass('active');
@@ -33,13 +40,7 @@ function set_active_week() {
 }
 
 $(document).ready(function() {
-	var day = active_day;
-	if (day > 0 && day < 6) {
-		$('div.masthead.this-week').find('li').eq(day - 1).addClass('active');
-		$('div.masthead.next-week').find('li').eq(day - 1).addClass('active');
-		$('div.this-week').find('div.tab-pane').eq(day - 1).addClass('active');
-		$('div.next-week').find('div.tab-pane').eq(day - 1).addClass('active');
-	}
+	set_active_day();
 	set_active_week();
 	
 	$('#this-week').click(function() {

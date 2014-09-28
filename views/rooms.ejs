@@ -18,7 +18,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a id="this-week" href="#">This Week</a></li>
+            <li><a id="this-week" href="#">This Week</a></li>
             <li><a id="next-week" href="#">Next Week</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -32,16 +32,18 @@
       
       <div class="masthead this-week">
         <ul class="nav nav-pills nav-justified">
+          <li><a href="#sunday" role="tab" data-toggle="pill">Sunday</a></li>
           <li><a href="#monday" role="tab" data-toggle="pill">Monday</a></li>
           <li><a href="#tuesday" role="tab" data-toggle="pill">Tuesday</a></li>
           <li><a href="#wendsday" role="tab" data-toggle="pill">Wendsday</a></li>
           <li><a href="#thursday" role="tab" data-toggle="pill">Thursday</a></li>
           <li><a href="#friday" role="tab" data-toggle="pill">Friday</a></li>
+          <li><a href="#saturday" role="tab" data-toggle="pill">Saturday</a></li>
         </ul>
       </div>
       
       <div class="tab-content this-week">
-        <% ["monday", "tuesday", "wendsday", "thursday", "friday"].forEach(function(day, index) { %>
+        <% ["sunday", "monday", "tuesday", "wendsday", "thursday", "friday", "saturday"].forEach(function(day, index) { %>
           <div class="tab-pane" id="<%= day %>">
             <h2><%= this_week[index].format('ll') %></h2>
             <% if (week1_records[index].length > 0) { %>
@@ -70,16 +72,18 @@
       
       <div class="masthead hidden next-week">
         <ul class="nav nav-pills nav-justified">
+          <li><a href="#next-sunday" role="tab" data-toggle="pill">Sunday</a></li>
           <li><a href="#next-monday" role="tab" data-toggle="pill">Monday</a></li>
           <li><a href="#next-tuesday" role="tab" data-toggle="pill">Tuesday</a></li>
           <li><a href="#next-wendsday" role="tab" data-toggle="pill">Wendsday</a></li>
           <li><a href="#next-thursday" role="tab" data-toggle="pill">Thursday</a></li>
           <li><a href="#next-friday" role="tab" data-toggle="pill">Friday</a></li>
+          <li><a href="#next-saturday" role="tab" data-toggle="pill">Saturday</a></li>
         </ul>
       </div>
       
       <div class="tab-content hidden next-week">
-        <% ["next-monday", "next-tuesday", "next-wendsday", "next-thursday", "next-friday"].forEach(function(day, index) { %>
+        <% ["next-sunday", "next-monday", "next-tuesday", "next-wendsday", "next-thursday", "next-friday", "next-saturday"].forEach(function(day, index) { %>
           <div class="tab-pane" id="<%= day %>">
             <h2><%= next_week[index].format('ll') %></h2>
             <% if (week2_records[index].length > 0) { %>

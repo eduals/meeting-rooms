@@ -5,16 +5,15 @@ var router = express.Router();
 var data = require('../data');
 
 var sun = moment().startOf('week');
-var this_week = [];
+var this_week = [moment(sun)];
 
-for (var i = 1; i < 6; i++) {
+for (var i = 1; i <= 6; i++) {
 	this_week.push(moment(sun.add(1, 'd')));
 }
 
-var next_week = [];
-sun.add(2, 'd');
+var next_week = [moment(sun.add(1, 'd'))];
 
-for (var i = 1; i < 6; i++) {
+for (var i = 1; i <= 6; i++) {
 	next_week.push(moment(sun.add(1, 'd')));
 }
 
