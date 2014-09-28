@@ -1,3 +1,4 @@
+var moment = require('moment');
 var express = require('express');
 var router = express.Router();
 
@@ -14,7 +15,9 @@ router.post('/', function(req, res) {
 		room: req.body.room,
 		building: req.body.building
 	});
-	res.redirect('/rooms?room=' + req.body.room + '&building=' + req.body.building);
+	var date = moment(req.body.date, "ll");
+	res.redirect('/rooms?room=' + req.body.room + '&building=' + req.body.building
+				 + '&day=' + date.day() + '&week=' + date.week());
 });
 
 module.exports = router;

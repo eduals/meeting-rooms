@@ -14,7 +14,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><%= building + '-' + room %></a>
+          <a class="navbar-brand" href="/"><%= building + '-' + room %></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -22,7 +22,7 @@
             <li><a id="next-week" href="#">Next Week</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">username@neusoft.com</a></li>
+            <li><a href="mailto:username@neusoft.com">username@neusoft.com</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -139,11 +139,17 @@
 		  		</select>
 			  </div>
 			</div>
+			<div class="alert alert-warning hidden col-sm-10 col-sm-offset-2" role="alert" id="timeWarning">
+				End time should be after begin time!
+			</div>
 			<div class="form-group">
 			  <label for="inputName" class="col-sm-2 control-label">User Name</label>
 			  <div class="col-sm-10">
 				<input class="form-control" id="inputName" placeholder="Name" name="user">
 			  </div>
+			</div>
+			<div class="alert alert-warning hidden col-sm-10 col-sm-offset-2" role="alert" id="nameWarning">
+				Please input your name!
 			</div>
 			<div class="form-group">
 			  <label for="inputTel" class="col-sm-2 control-label">Telephone</label>
@@ -170,10 +176,12 @@
       </div>
     </div> <!-- /container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+		var active_week = <%= active_week %>;
+		var active_day = <%= active_day %>;
+	</script>
+   
+    <% include partials/footer.ejs %>
     <script src="javascripts/rooms.js"></script>
 
   </body>

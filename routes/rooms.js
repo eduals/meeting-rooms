@@ -26,23 +26,35 @@ function filter_records(docs, week) {
 		});
 		records.push(recs);
 	});
-	console.log(records);
+//	console.log(records);
 	return records;
 }
 
 /* GET book records. */
 router.get('/', function(req, res) {
-	var room = '214';
-	var building = 'A1';
+	var room = null;
+	var building = null;
 	if (req.query.room)
 		room = req.query.room;
 	if (req.query.building)
 		building = req.query.building;
+	if (! (room && building)) {
+		res.redirect('/');
+		return;
+	}
+	var today = moment();
+	var active_week = 1;
+	if (req.query.week && (today.week() != Number(req.query.week)))
+		active_week = 2;
+	var active_day = today.day();
+	if (req.query.day)
+		active_day = Number(req.query.day);
 	data.query({room: room, building: building}, function(err, docs) {
 		res.render('rooms', {this_week: this_week, next_week: next_week,
-							 room: room, building: building, today: moment(),
+							 room: room, building: building, today: today,
 							 week1_records: filter_records(docs, this_week),
-							 week2_records: filter_records(docs, next_week)
+							 week2_records: filter_records(docs, next_week),
+							 active_day: active_day, active_week: active_week
 							});
 	});
 });
